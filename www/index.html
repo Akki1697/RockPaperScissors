@@ -67,7 +67,7 @@
 					compChoice = CHOICE.SCISSORS }
 				}
 			document.getElementById('result').innerHTML="<p>You chose '" + humanChoice.name + "' and I chose '" + compChoice.name + "'</p>";
-			document.getElementById('log').innerHTML+="H:" + humanChoice.code + " C:" + compChoice.code + "|";
+			<!--document.getElementById('log').innerHTML+="H:" + humanChoice.code + " C:" + compChoice.code + "|";-->
 	
 			var win = humanChoice.value - compChoice.value;
 			if ( win === 0 ) { 
@@ -105,6 +105,15 @@
 				overflow: hidden;}
 			p {font-size:25px;}
 			button {font-size:45px; width:250px; margin:20px 50px;}
+			.mblBlueButton {
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#7a9de9), to(#2362dd), color-stop(0.5, #366edf), color-stop(0.5, #215fdc));
+				background-image: linear-gradient(to bottom, #7a9de9 0%, #366edf 50%, #215fdc 50%, #2362dd 100%);
+				color: white;
+			}
+			.mblBlueButtonSelected {
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#8ea4c1), to(#4a6c9b), color-stop(0.5, #5877a2), color-stop(0.5, #476999));
+				background-image: linear-gradient(to bottom, #8ea4c1 0%, #5877a2 50%, #476999 50%, #4a6c9b 100%);
+			}
 		</style>
 	</head>
 	<body style="visibility:hidden;">
@@ -114,7 +123,7 @@
 		</div>
 		<div data-dojo-type="dojox.mobile.RoundRect">
 			<h2 dojoType="dojox.mobile.RoundRectCategory">Choose ...</h2>
-			<button dojoType="dojox.mobile.Button" class="baseBtn glossy navyBtn" label="Rock" onClick="playGame('R')"></button>
+			<button dojoType="dojox.mobile.Button" class="mblBlueButton" label="Rock" onClick="playGame('R')"></button>
 			<button dojoType="dojox.mobile.Button" class="baseBtn glossy navyBtn" label="Paper" onClick="playGame('P')"></button>
 			<button dojoType="dojox.mobile.Button" class="baseBtn glossy navyBtn" label="Scissors" onClick="playGame('S')"></button>
 			<button dojoType="dojox.mobile.Button" class="baseBtn glossy whiteBtn" label="Restart" onClick="restart()"></button>
