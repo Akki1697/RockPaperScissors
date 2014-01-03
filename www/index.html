@@ -14,7 +14,7 @@
 			};
 		</script>
 		<script src="dojox/mobile/deviceTheme.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.2/dojo/dojo.js"></script> 
 		<script>
 			require(["dojox/mobile",
 			         "dojox/mobile/parser",
@@ -79,7 +79,7 @@
 					else {}
 				}
 			}
-			document.getElementById('tally').innerHTML = "<p><i>Leaderboard:</i>&nbsp;" + plays + "&nbsp;plays<br />Your wins:&nbsp;" + humanWins + "&nbsp;&nbsp;&nbsp;My wins:&nbsp;" + compWins + "&nbsp;&nbsp;&nbsp;Draws:&nbsp;" + (plays - (humanWins + compWins)) + "</p>";
+			document.getElementById('tally').innerHTML = "<p><i>Leaderboard</i>&nbsp;&nbsp;Plays:&nbsp;" + plays + "<br />Your wins:&nbsp;" + humanWins + "&nbsp;&nbsp;&nbsp;My wins:&nbsp;" + compWins + "&nbsp;&nbsp;&nbsp;Draws:&nbsp;" + (plays - (humanWins + compWins)) + "</p>";
 			if ( compWins < humanWins ) { 
 				document.getElementById('tally').innerHTML += "<p>You're in the lead</p>"; } 
 			else if ( compWins > humanWins ) {
@@ -109,10 +109,9 @@
 			}
 		</style>
 	</head>
-	<body>
-	<div class="mblBackground">
-		<div data-dojo-type="dojox/mobile/Heading"
-			data-dojo-props="fixed: 'top'">
+	<body style="visibility:hidden;">
+	<div id="settings" data-dojo-type="dojox/mobile/View" data-dojo-props="selected:true">
+		<div data-dojo-type="dojox/mobile/Heading" data-dojo-props="fixed: 'top'">
 			Rock Paper Scissors Game
 		</div>
 		<div data-dojo-type="dojox.mobile.RoundRect">
