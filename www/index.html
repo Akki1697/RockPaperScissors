@@ -43,8 +43,9 @@
 		var compWins  = 0;
 
 		function PlayGame(play) {
-			var humanChoice;
-			var compChoice;
+			if(typeof play === 'undefined'){return;}
+			var humanChoice = null;
+			var compChoice  = null;
 	
 			if (play==='R') {
 				humanChoice = CHOICE.ROCK;
@@ -67,7 +68,7 @@
 	
 			var win = humanChoice.value - compChoice.value;
 			if ( win === 0 ) { 
-				document.getElementById('result').innerHTML += "<p><b>So we draw</b></p>" } 
+				document.getElementById('result').innerHTML += "<p><b>So we've drawn</b></p>" } 
 			else {
 				if ( win === -2 || win === 1 ) { 
 					document.getElementById('result').innerHTML += "<p><b>So you win</b></p>"; humanWins++; }
@@ -110,6 +111,7 @@
 			Rock Paper Scissors Game
 		</div>
 		<div data-dojo-type="dojox.mobile.RoundRect">
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Choose ...</h2>
 			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Rock" onClick="PlayGame('R')"></button>
 			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Paper" onClick="PlayGame('P')"></button>
 			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Scissors" onClick="PlayGame('S')"></button>			
