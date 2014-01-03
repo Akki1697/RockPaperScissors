@@ -13,6 +13,7 @@
 				async: true
 			};
 		</script>
+		<script src="dojox/mobile/deviceTheme.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
 		<script>
 					// Set up the native device themes so they're loaded quickest
@@ -27,40 +28,11 @@
 			         "dojo/_base/array",
 			         "dojox/mobile/compat",
 			         "dojo/domReady!"],
-					function(dm, parser, compat, deviceTheme, scrollableView,
+					function(dm, parser, compat, deviceTheme, heading, scrollableView,
 					         button, domAttr, baseArray, compat) {
 					parser.parse();
 			});
 		</script>
-		<style type="text/css">
-			p, form {font-size:25px;}
-			button  {font-size:45px; width:250px; margin:20px 50px;}
-			.redButton {
-				border-color: #cc3333;
-				background: -webkit-gradient(linear, left top, left bottom, from(#D3656D), to(#BC1320), color-stop(0.5, #C9404B), color-stop(0.5, #BC1421));
-			}
-			.redButtonSelected {
-				background: -webkit-gradient(linear, left top, left bottom, from(#AF333C), to(#880E17), color-stop(0.5, #952B33), color-stop(0.5, #870F18));
-			}
-		</style>
-	</head>
-	<body>
-
-	<div class="mblBackground">
-		<div data-dojo-type="dojox/mobile/Heading"
-			data-dojo-props="fixed: 'top'">
-			Rock Paper Scissors Game
-		</div>
-		<div data-dojo-type="dojox.mobile.RoundRect">
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" data-dojo-props='label:"Rock", onClick:PlayGame("R")'></button>
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" data-dojo-props='label:"Paper", onClick:PlayGame("P")'></button>
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" data-dojo-props='label:"Scissors", onClick:PlayGame("S")'></button>			
-			<span id="result">&nbsp;</span><br />
-			<span id="tally">&nbsp;</span><br />
-			<span id="log">&nbsp;</span><br />
-		</div>
-	</div>	
-				
 	<script type="text/javascript">
 		var CHOICE = { // set up enumerations
 			ROCK     : {value: 1, name: "Rock", code: "R"}, 
@@ -68,7 +40,7 @@
 			SCISSORS : {value: 3, name: "Scissors", code: "S"}
 		};
 		var humanWins = 0;
-		var compWins = 0;
+		var compWins  = 0;
 
 		function PlayGame(play) {
 			var humanChoice;
@@ -91,7 +63,7 @@
 					compChoice = CHOICE.SCISSORS }
 				}
 			document.getElementById('result').innerHTML="<p>You chose '" + humanChoice.name + "' and I chose '" + compChoice.name + "'</p>";
-			//document.getElementById('log').innerHTML+="H:" + humanChoice.code + " C:" + compChoice.code + "-";
+			document.getElementById('log').innerHTML+="H:" + humanChoice.code + " C:" + compChoice.code + "//";
 	
 			var win = humanChoice.value - compChoice.value;
 			if ( win === 0 ) { 
@@ -114,9 +86,37 @@
 				document.getElementById('tally').innerHTML += "<p>We're running head to head</p>"; } 		
 		}
 		</script>
-		<script type="text/javascript" src="js/index.js"></script>
+		<!--<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
 			app.initialize();
 		</script>
+			-->
+		<style type="text/css">
+			p, form {font-size:25px;}
+			button  {font-size:45px; width:250px; margin:20px 50px;}
+			.redButton {
+				border-color: #cc3333;
+				background: -webkit-gradient(linear, left top, left bottom, from(#D3656D), to(#BC1320), color-stop(0.5, #C9404B), color-stop(0.5, #BC1421));
+			}
+			.redButtonSelected {
+				background: -webkit-gradient(linear, left top, left bottom, from(#AF333C), to(#880E17), color-stop(0.5, #952B33), color-stop(0.5, #870F18));
+			}
+		</style>
+	</head>
+	<body>
+	<div class="mblBackground">
+		<div data-dojo-type="dojox/mobile/Heading"
+			data-dojo-props="fixed: 'top'">
+			Rock Paper Scissors Game
+		</div>
+		<div data-dojo-type="dojox.mobile.RoundRect">
+			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Rock" onClick="PlayGame('R')"></button>
+			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Paper" onClick="PlayGame('P')"></button>
+			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Scissors" onClick="PlayGame('S')"></button>			
+			<span id="result">&nbsp;</span><br />
+			<span id="tally">&nbsp;</span><br />
+			<span id="log">&nbsp;</span><br />
+		</div>
+	</div>			
 	</body>
 </html>
