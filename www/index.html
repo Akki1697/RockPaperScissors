@@ -39,14 +39,16 @@
 			PAPER    : {value: 2, name: "Paper", code: "P"}, 
 			SCISSORS : {value: 3, name: "Scissors", code: "S"}
 		};
+		var plays = 0;
 		var humanWins = 0;
 		var compWins  = 0;
 
-		function PlayGame(play) {
+		function playGame(play) {
 			if(typeof play === 'undefined'){return;}
 			var humanChoice = null;
 			var compChoice  = null;
-	
+			plays++;
+			
 			if (play==='R') {
 				humanChoice = CHOICE.ROCK;
 			} else if (play==='P') {
@@ -64,7 +66,7 @@
 					compChoice = CHOICE.SCISSORS }
 				}
 			document.getElementById('result').innerHTML="<p>You chose '" + humanChoice.name + "' and I chose '" + compChoice.name + "'</p>";
-			document.getElementById('log').innerHTML+="H:" + humanChoice.code + " C:" + compChoice.code + "//";
+			document.getElementById('log').innerHTML+="H:" + humanChoice.code + " C:" + compChoice.code + "|";
 	
 			var win = humanChoice.value - compChoice.value;
 			if ( win === 0 ) { 
@@ -78,13 +80,22 @@
 					else {}
 				}
 			}
-			document.getElementById('tally').innerHTML = "<p><i>Leaderboard:</i><br />Your wins: " + humanWins + "&nbsp;&nbsp;&nbsp;My wins: " + compWins + "</p>";
+			document.getElementById('tally').innerHTML = "<p><i>Leaderboard:</i>&nbsp;&lt;plays&nbsp;" + plays + "&gt;<br />Your wins:&nbsp;" + humanWins + "&nbsp;&nbsp;&nbsp;My wins:&nbsp;" + compWins + "&nbsp;&nbsp;&nbsp;Draws:&nbsp;" + (plays - (humanWins + compWins)) + "</p>";
 			if ( compWins < humanWins ) { 
 				document.getElementById('tally').innerHTML += "<p>You're in the lead</p>"; } 
 			else if ( compWins > humanWins ) {
 				document.getElementById('tally').innerHTML += "<p>I'm in the lead</p>"; } 
 			else if ( compWins == humanWins ) {
 				document.getElementById('tally').innerHTML += "<p>We're running head to head</p>"; } 		
+		}
+		
+		function restart() {
+			plays = 0;
+			humanWins = 0;
+			compWins  = 0;
+			document.getElementById('result').innerHTML = "&nbsp;";
+			document.getElementById('tally').innerHTML = "&nbsp;";
+			document.getElementById('log').innerHTML = "&nbsp;";
 		}
 		</script>
 		<!--<script type="text/javascript" src="js/index.js"></script>
@@ -112,9 +123,10 @@
 		</div>
 		<div data-dojo-type="dojox.mobile.RoundRect">
 			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Choose ...</h2>
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Rock" onClick="PlayGame('R')"></button>
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Paper" onClick="PlayGame('P')"></button>
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Scissors" onClick="PlayGame('S')"></button>			
+			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Rock" onClick="playGame('R')"></button>
+			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Paper" onClick="playGame('P')"></button>
+			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Scissors" onClick="playGame('S')"></button>
+			<button data-dojo-type="dojox/mobile/Button" label="Restart" onClick="restart()"></button>
 			<span id="result">&nbsp;</span><br />
 			<span id="tally">&nbsp;</span><br />
 			<span id="log">&nbsp;</span><br />
