@@ -80,13 +80,13 @@
 					else {}
 				}
 			}
-			document.getElementById('tally').innerHTML = "<p><i>Leaderboard:</i>&nbsp;&lt;plays&nbsp;" + plays + "&gt;<br />Your wins:&nbsp;" + humanWins + "&nbsp;&nbsp;&nbsp;My wins:&nbsp;" + compWins + "&nbsp;&nbsp;&nbsp;Draws:&nbsp;" + (plays - (humanWins + compWins)) + "</p>";
+			document.getElementById('tally').innerHTML = "<p><i>Leaderboard:</i>&nbsp;" + plays + "&nbsp;plays<br />Your wins:&nbsp;" + humanWins + "&nbsp;&nbsp;&nbsp;My wins:&nbsp;" + compWins + "&nbsp;&nbsp;&nbsp;Draws:&nbsp;" + (plays - (humanWins + compWins)) + "</p>";
 			if ( compWins < humanWins ) { 
 				document.getElementById('tally').innerHTML += "<p>You're in the lead</p>"; } 
 			else if ( compWins > humanWins ) {
 				document.getElementById('tally').innerHTML += "<p>I'm in the lead</p>"; } 
 			else if ( compWins == humanWins ) {
-				document.getElementById('tally').innerHTML += "<p>We're running head to head</p>"; } 		
+				document.getElementById('tally').innerHTML += "<p>We're running head to head</p>"; }
 		}
 		
 		function restart() {
@@ -98,16 +98,11 @@
 			document.getElementById('log').innerHTML = "&nbsp;";
 		}
 		</script>
-		<!--<script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript">
-			app.initialize();
-		</script>
-			-->
 		<style type="text/css">
-			p, form {font-size:25px;}
-			button  {font-size:45px; width:250px; margin:20px 50px;}
+			p {font-size:25px;}
+			button {font-size:45px; width:250px; margin:20px 50px;}
 			.redButton {
-				border-color: #cc3333;
+				border-color: #CC3333;
 				background: -webkit-gradient(linear, left top, left bottom, from(#D3656D), to(#BC1320), color-stop(0.5, #C9404B), color-stop(0.5, #BC1421));
 			}
 			.redButtonSelected {
@@ -131,6 +126,6 @@
 			<span id="tally">&nbsp;</span><br />
 			<span id="log">&nbsp;</span><br />
 		</div>
-	</div>			
+	</div>
 	</body>
 </html>
