@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8" />
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
 		<title>Rock Paper Scissors Game</title>
 		<!-- set Dojo configuration, load Dojo -->
 		<script>
 			dojoConfig= {
-				async: true
+				async: true,
+				mblAlwaysHideAddressBar:true
 			};
 		</script>
 		<script src="dojox/mobile/deviceTheme.js"></script>
@@ -98,28 +100,24 @@
 		}
 		</script>
 		<style type="text/css">
+			html, body{
+				height: 100%;
+				overflow: hidden;}
 			p {font-size:25px;}
 			button {font-size:45px; width:250px; margin:20px 50px;}
-			.redButton {
-				border-color: #CC3333;
-				background: -webkit-gradient(linear, left top, left bottom, from(#D3656D), to(#BC1320), color-stop(0.5, #C9404B), color-stop(0.5, #BC1421));
-			}
-			.redButtonSelected {
-				background: -webkit-gradient(linear, left top, left bottom, from(#AF333C), to(#880E17), color-stop(0.5, #952B33), color-stop(0.5, #870F18));
-			}
 		</style>
 	</head>
 	<body style="visibility:hidden;">
-	<div id="settings" data-dojo-type="dojox/mobile/View" data-dojo-props="selected:true">
-		<div data-dojo-type="dojox/mobile/Heading" data-dojo-props="fixed: 'top'">
+	<div id="settings" dojoType="dojox/mobile/View">
+		<div dojoType="dojox/mobile/Heading" data-dojo-props="fixed: 'top'">
 			Rock Paper Scissors Game
 		</div>
 		<div data-dojo-type="dojox.mobile.RoundRect">
-			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Choose ...</h2>
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Rock" onClick="playGame('R')"></button>
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Paper" onClick="playGame('P')"></button>
-			<button data-dojo-type="dojox/mobile/Button" class="redButton" label="Scissors" onClick="playGame('S')"></button>
-			<button data-dojo-type="dojox/mobile/Button" label="Restart" onClick="restart()"></button>
+			<h2 dojoType="dojox.mobile.RoundRectCategory">Choose ...</h2>
+			<button dojoType="dojox.mobile.Button" class="baseBtn glossy navyBtn" label="Rock" onClick="playGame('R')"></button>
+			<button dojoType="dojox.mobile.Button" class="baseBtn glossy navyBtn" label="Paper" onClick="playGame('P')"></button>
+			<button dojoType="dojox.mobile.Button" class="baseBtn glossy navyBtn" label="Scissors" onClick="playGame('S')"></button>
+			<button dojoType="dojox.mobile.Button" class="baseBtn glossy whiteBtn" label="Restart" onClick="restart()"></button>
 			<span id="result">&nbsp;</span><br />
 			<span id="tally">&nbsp;</span><br />
 			<span id="log">&nbsp;</span><br />
